@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Lightbulb } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
@@ -9,12 +8,13 @@ export default function LightControlingCard() {
   const toggleLight = async () => {
     try {
       const serverAddress = "http://192.168.1.163:5000";
-      const response = await axios.get(`${serverAddress}/${isLightOn ? "off2" : "on2"}`);
+      await axios.get(`${serverAddress}/${isLightOn ? "off2" : "on2"}`);
       setIsLightOn(!isLightOn);
     } catch (error) {
       console.error("Error toggling light:", error);
     }
   };
+  
 
   return (
     <div className="card">

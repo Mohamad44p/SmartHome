@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/shared/Navbar";
 import { HomePage } from "./components/shared/HomePage";
 import Loader from "./components/Loaders/Loader";
+import { Toaster } from "./components/ui/sonner";
 
 const LazyRooms = React.lazy(() => import("./components/Rooms/Rooms"));
 const LazyAbout = React.lazy(() => import("./components/shared/About"));
@@ -55,7 +56,9 @@ function App() {
             </Suspense>
           }
         />
+
       </Routes>
+      <Toaster />
     </Router>
   );
 }

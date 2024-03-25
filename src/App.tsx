@@ -1,19 +1,33 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/shared/Navbar";
-import { HomePage } from "./components/shared/HomePage";
 import Loader from "./components/Loaders/Loader";
 import { Toaster } from "./components/ui/sonner";
 
 const LazyRooms = React.lazy(() => import("./components/Rooms/Rooms"));
-const LazyAbout = React.lazy(() => import("./components/shared/About"));
-const LazyService = React.lazy(() => import("./components/shared/Service"));
+const LazyAbout = React.lazy(() => import("./pages/AboutUspage"));
+const LazyService = React.lazy(() => import("./pages/ServicePage"));
+const LazyHomePage = React.lazy(() => import("./pages/Home"));
+
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <Suspense
+              fallback={
+                <div className="w-full max-w-7xl mx-auto h-[50vh] flex justify-center items-center mt-24">
+                  <Loader />
+                </div>
+              }
+            >
+              <LazyHomePage />
+            </Suspense>
+          }
+        />
         <Route
           path="/Rooms"
           element={
@@ -56,7 +70,6 @@ function App() {
             </Suspense>
           }
         />
-
       </Routes>
       <Toaster />
     </Router>

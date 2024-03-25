@@ -1,6 +1,8 @@
-import LightControlingCard from "./LightControlingCard";
-import LightSlider from "./LightSlider";
-import MeasurementsCard from "./MeasurementsCard";
+import LightControlingCard from "../cards/LightControlingCard";
+import LightSlider from "../cards/LightSlider";
+import MeasurementsCard from "../cards/MeasurementsCard";
+import RgbControling from "../cards/RgbControling";
+import TvCard from "../cards/TvCard";
 
 export default function LivingRoom() {
   return (
@@ -8,7 +10,8 @@ export default function LivingRoom() {
       <MeasurementsCard/>
       <LightControlingCard/>
       <LightSlider/>
-      <MeasurementsCard/>
+      <TvCard/>
+      <RgbControling/>
     </div>
   )
 }

@@ -5,8 +5,8 @@ export default function MeasurementsCard() {
     <div>
       <div className="cardContainer">
         <div className="card">
-          <p className="city">PINK CITY</p>
-          <p className="weather">PARTILY CLOUDY</p>
+          <p className="city">Palstine | Herbron</p>
+          <p className="weather">Temperature</p>
           <svg
             className="weather"
             version="1.1"
@@ -34,8 +34,8 @@ export default function MeasurementsCard() {
               <p className="minTemp">30%</p>
             </div>
             <div className="max">
-              <p className="maxHeading">intensity</p>
-              <p className="maxTemp">50%</p>
+              <p className="maxHeading">Energy</p>
+              <p className="maxTemp">50Wh</p>
             </div>
           </div>
         </div>

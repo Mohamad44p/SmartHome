@@ -7,7 +7,6 @@ import {
 } from "../ui/card";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import BedRoom from "./BedRoom";
 import Garage from "./Garage";
 import Kitchen from "./Kitchen";
 import LivingRoom from "./LivingRoom";
@@ -18,18 +17,12 @@ export default function Rooms() {
       <div className="w-full mx-auto flex justify-center items-center mt-24">
         <Tabs defaultValue="LivingRoom" className="lg:w-[600px] w-[300px]">
           <HoverBorderGradient>
-            <TabsList className="grid w-full grid-cols-4 bg-black">
+            <TabsList className="grid w-full grid-cols-3 bg-black">
               <TabsTrigger
                 className="text-[10px] lg:text-[15px] mr-2 lg:mr-0"
                 value="LivingRoom"
               >
                 Living Room
-              </TabsTrigger>
-              <TabsTrigger
-                className="text-[10px] lg:text-[15px] mr-2 lg:mr-0"
-                value="BedRoom"
-              >
-                Bed Room
               </TabsTrigger>
               <TabsTrigger
                 className="text-[10px] lg:text-[15px] mr-2 lg:mr-0"
@@ -53,19 +46,6 @@ export default function Rooms() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <LivingRoom />
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="BedRoom">
-            <Card>
-              <CardHeader>
-                <CardTitle>Bed Room</CardTitle>
-                <CardDescription>
-                  Make changes to your Bed Room.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <BedRoom />
               </CardContent>
             </Card>
           </TabsContent>

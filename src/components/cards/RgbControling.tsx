@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 export default function RgbControling() {
@@ -7,7 +8,7 @@ export default function RgbControling() {
     const hexColor = e.target.value;
     const rgbColor = hexToRgb(hexColor);
     setColor(rgbColor);
-    console.log(rgbColor);
+    sendColorToBackend(rgbColor);
   };
 
   const hexToRgb = (hex: string) => {
@@ -16,6 +17,19 @@ export default function RgbControling() {
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
     return { r, g, b };
+  };
+
+  const sendColorToBackend = (color: { r: number; g: number; b: number }) => {
+    const serverAddress = "http://192.168.1.163:5000";
+
+    axios
+      .post(`${serverAddress}/set_color`, color)
+      .then((response: { data: any }) => {
+        console.log(response.data);
+      })
+      .catch((error: Error) => {
+        console.error("Error sending color to backend:", error);
+      });
   };
 
   return (

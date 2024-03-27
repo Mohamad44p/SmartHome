@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { TracingBeam } from "../ui/tracing-beam";
 import HomeImage1 from "../../assets/HomeImage1.jpg";

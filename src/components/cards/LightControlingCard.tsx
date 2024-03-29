@@ -18,9 +18,9 @@ export default function LightControlingCard() {
   return (
     <div className="card">
       <div className="card2 flex flex-col gap-7">
-        <div className="flex justify-between items-center">
-          <Lightbulb size={20} color={isLightOn ? "yellow" : "white"} />
-          <h1 className="text-[18px] text-white font-[700]">
+        <div className="flex justify-evenly items-center">
+          <Lightbulb  size={20} color={isLightOn ? "yellow" : "white"} />
+          <h1 className="text-[15px] text-white font-[700]">
             Light Controling
           </h1>
         </div>

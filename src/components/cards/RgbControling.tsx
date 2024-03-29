@@ -35,12 +35,12 @@ export default function RgbControling() {
   return (
     <div className="card">
       <div className="card2 flex flex-col gap-7">
-        <div className="flex justify-between items-center">
-          <h1 className="text-[18px] text-white font-[700]">
+        <div className="flex justify-center items-center">
+          <h1 className="text-[14px] text-white font-[700]">
             Light Controling RGB
           </h1>
         </div>
-        <p className="text-muted-foreground text-sm font-semibold">
+        <p className="text-muted-foreground text-[12px] text-center font-semibold">
           RGB Color: {`rgb(${color.r}, ${color.g}, ${color.b})`}
         </p>
         <div className="flex flex-col justify-center items-center gap-6">

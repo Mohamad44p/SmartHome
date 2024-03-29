@@ -38,8 +38,8 @@ export default function LightSlider() {
   return (
     <div className="card">
       <div className="card2 flex flex-col gap-7">
-        <div className="flex justify-between items-center">
-          <h1 className="text-[18px] text-white font-[700]">
+        <div className="flex justify-center items-center">
+          <h1 className="text-[13px] lg:text-[15px] text-white font-[700]">
             Light intensity Control
           </h1>
         </div>

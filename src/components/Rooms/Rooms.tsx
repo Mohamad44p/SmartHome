@@ -15,7 +15,7 @@ export default function Rooms() {
   return (
     <div>
       <div className="w-full mx-auto flex justify-center items-center mt-24">
-        <Tabs defaultValue="LivingRoom" className="md:w-[600px] w-[250px]">
+        <Tabs defaultValue="LivingRoom" className="md:w-[700px] w-[250px]">
           <HoverBorderGradient>
             <TabsList className="grid w-full grid-cols-3 bg-black">
               <TabsTrigger

@@ -10,8 +10,8 @@ export default function LivingRoom() {
       <MeasurementsCard/>
       <LightControlingCard/>
       <LightSlider/>
-      <TvCard/>
       <RgbControling/>
+      <TvCard/>
     </div>
   )
 }

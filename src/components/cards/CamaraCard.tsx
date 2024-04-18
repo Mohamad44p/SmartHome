@@ -11,28 +11,20 @@ export default function CamaraCard() {
     const loadCameraFeed = async () => {
       try {
         const serverAddress = "http://192.168.1.163:5000";
-
-        const response = await axios.get(`${serverAddress}/video_feed`, {
-          responseType: "blob",
-        });
-
-        if (response.status === 200) {
-          const blob = new Blob([response.data], { type: "video/mp4" });
-          const videoUrl = URL.createObjectURL(blob);
-          setVideoSrc(videoUrl);
+        const response = await axios.get(`${serverAddress}/video_feed`);
+        if (response.data) {
+          setVideoSrc(response.data);
           setCameraStatus(true);
         } else {
           setCameraStatus(false);
         }
       } catch (error) {
-        console.error("Error fetching camera feed:", error);
+        console.error("Error loading camera feed:", error);
         setCameraStatus(false);
       }
     };
 
     loadCameraFeed();
-
-    return () => {};
   }, []);
 
   return (

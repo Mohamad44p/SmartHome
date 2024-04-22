@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function CamaraCard() {
-  const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [cameraStatus, setCameraStatus] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -12,8 +11,7 @@ export default function CamaraCard() {
       try {
         const serverAddress = "http://192.168.1.163:5000";
         const response = await axios.get(`${serverAddress}/video_feed`);
-        if (response.data) {
-          setVideoSrc(response.data);
+        if (response.status === 200) {
           setCameraStatus(true);
         } else {
           setCameraStatus(false);
@@ -32,12 +30,13 @@ export default function CamaraCard() {
       <div className="relative flex md:w-[560px] flex-col rounded-xl bg-[#1a1a1a] bg-clip-border shadow-md">
         <div className="relative md:w-full -mt-6 lg:h-96 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
           {cameraStatus === true ? (
-            <video
-              className="w-full h-full object-cover"
-              src={videoSrc ?? ""}
-              autoPlay
-              controls
-            ></video>
+            <video autoPlay className="w-full h-full object-cover">
+              <source
+                src="http://192.168.1.163:5000/video_feed"
+                type="multipart/x-mixed-replace"
+              />
+              Your browser does not support the video tag.
+            </video>
           ) : (
             <img
               src={CamaraPlacholder}

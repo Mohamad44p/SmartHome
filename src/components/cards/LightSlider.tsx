@@ -1,67 +1,40 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import LightOn from "../../assets/LightOn.png";
-import LightOff from "../../assets/LightOff.png";
+import { Card, CardContent, CardHeader } from "../ui/card";
+import { Button } from "../ui/button";
 
 export default function LightSlider() {
-  const [brightness, setBrightness] = useState(0);
+  const [state, setState] = useState();
 
-  useEffect(() => {
-    const serverAddress = "http://192.168.1.163:5000";
-
-    axios
-      .get(`${serverAddress}/brightness`)
-      .then((response) => {
-        const { brightness } = response.data;
-        setBrightness(brightness);
-      })
-      .catch((error) => {
-        console.error("Error fetching LED brightness:", error);
-      });
-  }, []);
-
-  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newBrightness = parseInt(event.target.value);
-    setBrightness(newBrightness);
-    const serverAddress = "http://192.168.1.163:5000";
-
-    axios
-      .get(`${serverAddress}/update?brightness=${newBrightness}`)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error updating LED brightness:", error);
-      });
-  };
+  useEffect(() => {}, []);
 
   return (
-    <div className="card">
-      <div className="card2 flex flex-col gap-7">
-        <div className="flex justify-center items-center">
-          <h1 className="text-[13px] lg:text-[15px] text-white font-[700]">
-            Light intensity Control
-          </h1>
-        </div>
-        <div className="flex flex-col justify-center items-center gap-6">
-          <div>
-            <img
-              src={brightness > 0 ? LightOn : LightOff}
-              alt="Light Bulb Image"
-              className={brightness > 0 ? "w-20 h-20" : "w-20 h-20"}
-              loading="lazy"
-            />
+    <>
+      <Card className="lg:h-[300px] lg:w-[650px] ">
+        <CardHeader>
+          <h5 className="mb-2 font-sans text-[15px] font-semibold leading-snug tracking-normal text-white antialiased">
+            Light Control Increasing/Decreasing
+          </h5>
+          <p className="font-semibold text-muted-foreground leading-snug tracking-normal  antialiased">
+            Use the 3 Buttons to increase or decrease the light in the room,
+            If you want to turn on One Light, press the first button 30%
+            brightness, for the second button 60% brightness and for the third
+            button 100% brightness.
+          </p>
+        </CardHeader>
+        <CardContent>
+          <div className="flex gap-11 mt-10 justify-center items-center">
+            <Button>
+              30%
+            </Button>
+            <Button >
+              60%
+            </Button>
+            <Button>
+              100%
+            </Button>
           </div>
-          <div className="max-w-[30em] flex items-center gap-3">
-            <input
-              type="range"
-              value={brightness}
-              onChange={handleSliderChange}
-            />{" "}
-            <p>{brightness}%</p>
-          </div>
-        </div>
-      </div>
-    </div>
+        </CardContent>
+      </Card>
+    </>
   );
 }

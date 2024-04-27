@@ -10,7 +10,7 @@ export default function CamaraCard() {
     const loadCameraFeed = async () => {
       try {
         const serverAddress = "http://192.168.1.163:5000";
-        const response = await axios.get(`${serverAddress}/video_feed`);
+        const response = await axios.get(`${serverAddress}/videofeed`);
         if (response.status === 200) {
           setCameraStatus(true);
         } else {
@@ -32,7 +32,7 @@ export default function CamaraCard() {
           {cameraStatus === true ? (
             <video autoPlay className="w-full h-full object-cover">
               <source
-                src="http://192.168.1.163:5000/video_feed"
+                src="http://192.168.1.163:5000/videofeed"
                 type="multipart/x-mixed-replace"
               />
               Your browser does not support the video tag.

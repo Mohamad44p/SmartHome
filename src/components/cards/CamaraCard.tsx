@@ -1,5 +1,4 @@
 import { Disc2 } from "lucide-react";
-import CamaraPlacholder from "../../assets/CamaraPlacholder.jpg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -29,21 +28,14 @@ export default function CamaraCard() {
     <div className="my-16">
       <div className="relative flex md:w-[560px] flex-col rounded-xl bg-[#1a1a1a] bg-clip-border shadow-md">
         <div className="relative md:w-full -mt-6 lg:h-96 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-          {cameraStatus === true ? (
-            <video autoPlay className="w-full h-full object-cover">
-              <source
-                src="http://192.168.1.163:5000/videofeed"
-                type="multipart/x-mixed-replace"
-              />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
+          <div>
+            <h1 className="lg:text-xl font-bold pb-8">Live Video Feed</h1>
             <img
-              src={CamaraPlacholder}
-              alt="Camera Placeholder"
-              className="w-full h-full object-cover"
+              id="bg"
+              src="http://192.168.1.163:5000/videofeed"
+              alt="Camera Feed"
             />
-          )}
+          </div>
         </div>
         <div className="p-6">
           <h5 className="flex gap-4 mb-2 font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">

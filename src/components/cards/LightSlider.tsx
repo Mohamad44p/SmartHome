@@ -28,7 +28,7 @@ export default function LightSlider() {
         <CardContent>
           <div className="flex gap-11 mt-10 justify-center items-center">
             <Button>30%</Button>
-            <Button>60%</Button>
+            <Button>70%</Button>
             <Button>100%</Button>
           </div>
         </CardContent>

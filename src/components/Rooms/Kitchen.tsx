@@ -4,10 +4,10 @@ import MeasurementsCard from "../cards/MeasurementsCard";
 
 export default function Kitchen() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-5">
+    <div className="flex flex-wrap justify-center lg:justify-between items-center gap-10">
       <MeasurementsCard />
-      <LightControlingKitchen/>
-      <LightSlider/>
+      <LightControlingKitchen />
+      <LightSlider />
     </div>
   );
 }

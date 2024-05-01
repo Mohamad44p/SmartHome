@@ -7,7 +7,7 @@ import {
 } from "../ui/card";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import Garage from "./Garage";
+import HomeYard from "./HomeYard";
 import Kitchen from "./Kitchen";
 import LivingRoom from "./LivingRoom";
 
@@ -32,9 +32,9 @@ export default function Rooms() {
               </TabsTrigger>
               <TabsTrigger
                 className="text-[10px] md:text-[15px] mr-2 lg:mr-0"
-                value="Garage"
+                value="HomeYard"
               >
-                Garage
+                Home yard
               </TabsTrigger>
             </TabsList>
           </HoverBorderGradient>
@@ -60,14 +60,16 @@ export default function Rooms() {
               </CardContent>
             </Card>
           </TabsContent>
-          <TabsContent value="Garage">
+          <TabsContent value="HomeYard">
             <Card>
               <CardHeader>
-                <CardTitle>Garage</CardTitle>
-                <CardDescription>Make changes to your Garage.</CardDescription>
+                <CardTitle>Home Yard</CardTitle>
+                <CardDescription>
+                  Control your Doors and See your camera Live.
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
-                <Garage />
+                <HomeYard />
               </CardContent>
             </Card>
           </TabsContent>

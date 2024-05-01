@@ -2,6 +2,7 @@ import { useState } from "react";
 import TvImage from "../../assets/TvImage.png";
 import "./TvCard.css";
 import axios from "axios";
+import { Card, CardHeader } from "../ui/card";
 
 export default function TvCard() {
   const [isTvOn, setisTvOn] = useState<boolean | null>(null);
@@ -19,14 +20,16 @@ export default function TvCard() {
   };
 
   return (
-    <div className="card">
+    <Card className="h-[300px]">
       <div className="card2 flex flex-col gap-7">
-        <div className="flex justify-evenly items-center">
-          <h1 className="text-[13px] lg:text-[15px] text-white font-[700]">TV Controlling</h1>
+        <CardHeader className="flex justify-evenly items-center">
+          <h1 className="text-[13px] lg:text-[15px] text-white font-[700]">
+            TV Controlling
+          </h1>
           <p className="text-muted-foreground text-[10px] lg:text-[12px] font-semibold">
             {isTvOn ? "TV is ON" : "TV is OFF"}
           </p>
-        </div>
+        </CardHeader>
         <div className="flex flex-col justify-center items-center gap-6">
           <div className="flex flex-col items-center justify-center gap-3">
             <img
@@ -53,6 +56,6 @@ export default function TvCard() {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

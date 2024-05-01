@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Card, CardHeader } from "../ui/card";
 
 export default function RgbControling() {
   const [color, setColor] = useState({ r: 255, g: 255, b: 255 });
@@ -24,7 +25,7 @@ export default function RgbControling() {
 
     axios
       .post(`${serverAddress}/set_color`, color)
-      .then((response: { data: any }) => {
+      .then((response: { data: unknown }) => {
         console.log(response.data);
       })
       .catch((error: Error) => {
@@ -33,13 +34,13 @@ export default function RgbControling() {
   };
 
   return (
-    <div className="card">
+    <Card className="h-[300px]">
       <div className="card2 flex flex-col gap-7">
-        <div className="flex justify-center items-center">
+        <CardHeader className="flex justify-center items-center">
           <h1 className="text-[14px] text-white font-[700]">
             Light Controling RGB
           </h1>
-        </div>
+        </CardHeader>
         <p className="text-muted-foreground text-[12px] text-center font-semibold">
           RGB Color: {`rgb(${color.r}, ${color.g}, ${color.b})`}
         </p>
@@ -55,6 +56,6 @@ export default function RgbControling() {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

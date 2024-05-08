@@ -32,9 +32,9 @@ export default function Rooms() {
               </TabsTrigger>
               <TabsTrigger
                 className="text-[10px] md:text-[15px] mr-2 lg:mr-0"
-                value="HomeYard"
+                value="Homeyard"
               >
-                Home yard
+                Home Yard
               </TabsTrigger>
             </TabsList>
           </HoverBorderGradient>
@@ -60,12 +60,13 @@ export default function Rooms() {
               </CardContent>
             </Card>
           </TabsContent>
-          <TabsContent value="HomeYard">
+          <TabsContent value="Homeyard">
             <Card>
               <CardHeader>
                 <CardTitle>Home Yard</CardTitle>
                 <CardDescription>
-                  Control your Doors and See your camera Live.
+                  Control your Doors And See your camera front of the House
+                  Live.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">

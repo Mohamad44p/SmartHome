@@ -10,7 +10,7 @@ import { Button } from "../ui/moving-border";
 
 export default function DoorCard() {
   const handleOpenDoor = () => {
-    axios.post('http://192.168.1.163:5000/move_servo', { angle: 180 })
+    axios.post('http://192.168.1.163:5000/open_door')
       .then(response => {
         console.log(response.data);
       })
@@ -20,7 +20,7 @@ export default function DoorCard() {
   };
 
   const handleCloseDoor = () => {
-    axios.post('http://192.168.1.163:5000/move_servo', { angle: 0 })
+    axios.post('http://192.168.1.163:5000/close_door')
       .then(response => {
         console.log(response.data);
       })

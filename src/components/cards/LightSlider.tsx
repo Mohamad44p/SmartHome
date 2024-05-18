@@ -1,15 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Slider } from "../ui/slider";
 
 export default function LightSlider() {
-  const [state, setState] = useState();
+  const [brightness, setBrightness] = useState(0);
 
-  useEffect(() => {
-    setState;
-  }, []);
-
-  console.log(state);
+  const handleSliderChange = (value: number[]) => {
+    setBrightness(value[0]);
+    fetch("http://192.168.1.163:5000/update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ brightness: value[0] }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Brightness set to:", data.brightness);
+      })
+      .catch((error) => {
+        console.error("Error setting brightness:", error);
+      });
+  };
 
   return (
     <>
@@ -18,17 +30,20 @@ export default function LightSlider() {
           <h5 className="mb-2 font-sans text-[15px] font-semibold leading-snug tracking-normal text-white antialiased">
             Light Control Increasing/Decreasing
           </h5>
-          <p className="font-semibold text-muted-foreground leading-snug tracking-normal  antialiased">
-            Use the 3 Buttons to increase or decrease the light in the room, If
-            you want to turn on One Light, press the first button 30%
-            brightness, for the second button 60% brightness and for the third
-            button 100% brightness.
+          <p className="font-semibold text-muted-foreground leading-snug tracking-normal antialiased">
+            Use the slider to adjust the brightness of the light.
           </p>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col md:flex-row gap-11 mt-10 justify-center items-center">
-            <Slider defaultValue={[0]} max={100} step={1} className="lg:w-[60%]"/>
-            <p className="text-xl">100%</p>
+            <Slider
+              defaultValue={[0]}
+              max={100}
+              step={1}
+              className="lg:w-[60%]"
+              onValueChange={handleSliderChange}
+            />
+            <p className="text-xl">{brightness}%</p>
           </div>
         </CardContent>
       </Card>

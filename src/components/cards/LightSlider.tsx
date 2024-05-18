@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "../ui/card";
-import { Button } from "../ui/button";
+import { Slider } from "../ui/slider";
 
 export default function LightSlider() {
   const [state, setState] = useState();
@@ -27,9 +27,8 @@ export default function LightSlider() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col md:flex-row gap-11 mt-10 justify-center items-center">
-            <Button>30%</Button>
-            <Button>70%</Button>
-            <Button>100%</Button>
+            <Slider defaultValue={[0]} max={100} step={1} className="lg:w-[60%]"/>
+            <p className="text-xl">100%</p>
           </div>
         </CardContent>
       </Card>

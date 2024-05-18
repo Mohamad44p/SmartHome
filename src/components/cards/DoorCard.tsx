@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   Card,
   CardContent,
@@ -9,23 +8,20 @@ import {
 import { Button } from "../ui/moving-border";
 
 export default function DoorCard() {
-  const handleOpenDoor = () => {
-    axios.post('http://192.168.1.163:5000/open_door')
-      .then(response => {
-        console.log(response.data);
+  const handleServo = (action: string) => {
+    fetch('http://192.168.1.163:5000/servo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ action }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
       })
-      .catch(error => {
-        console.error('Error opening door:', error);
-      });
-  };
-
-  const handleCloseDoor = () => {
-    axios.post('http://192.168.1.163:5000/close_door')
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error('Error closing door:', error);
+      .catch((error) => {
+        console.error('Error:', error);
       });
   };
 
@@ -39,10 +35,10 @@ export default function DoorCard() {
       </CardHeader>
       <CardContent className="space-y-2">
         <div className="grid md:grid-cols-2 grid-cols-1 justify-center items-center gap-5">
-          <Button className="text-white font-bold py-2 px-4 rounded" onClick={handleOpenDoor}>
+          <Button className="text-white font-bold py-2 px-4 rounded" onClick={handleServo}>
             Open Door
           </Button>
-          <Button className="bg-black text-white font-bold py-2 px-4 rounded" onClick={handleCloseDoor}>
+          <Button className="bg-black text-white font-bold py-2 px-4 rounded" onClick={handleServo}>
             Close Door
           </Button>
         </div>

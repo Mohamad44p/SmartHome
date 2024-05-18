@@ -9,7 +9,7 @@ export default function LightControlingCard() {
   const toggleLight = async () => {
     try {
       const serverAddress = "http://192.168.1.163:5000";
-      await axios.get(`${serverAddress}/${isLightOn ? "ledvon" : "ledvoff"}`);
+      await axios.get(`${serverAddress}/${isLightOn ? "ledvoff" : "ledvon"}`);
       setIsLightOn(!isLightOn);
     } catch (error) {
       console.error("Error toggling light:", error);

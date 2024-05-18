@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Slider } from "../ui/slider";
 
 export default function LightSlider() {
-  const [brightness, setBrightness] = useState(0);
+  const [brightness, setBrightness] = useState<number>(0);
+
+  useEffect(() => {
+    fetch("http://192.168.1.163:5000/get_brightness")
+      .then((response) => response.json())
+      .then((data) => {
+        setBrightness(data.brightness);
+      })
+      .catch((error) => {
+        console.error("Error fetching brightness:", error);
+      });
+  }, []);
 
   const handleSliderChange = (value: number[]) => {
     setBrightness(value[0]);
-    fetch("http://192.168.1.163:5000/update", {
+    fetch("http://192.168.1.163:5000/set_brightness", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +48,8 @@ export default function LightSlider() {
         <CardContent>
           <div className="flex flex-col md:flex-row gap-11 mt-10 justify-center items-center">
             <Slider
-              defaultValue={[0]}
+              defaultValue={[brightness]}
+              value={[brightness]}
               max={100}
               step={1}
               className="lg:w-[60%]"

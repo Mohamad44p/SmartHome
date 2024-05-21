@@ -2,7 +2,8 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/shared/Navbar";
 import Loader from "./components/Loaders/Loader";
-import { Toaster } from "./components/ui/sonner";
+import { Toaster } from "sonner";
+import Notification from "./components/shared/Notification";
 
 const LazyRooms = React.lazy(() => import("./components/Rooms/Rooms"));
 const LazyAbout = React.lazy(() => import("./pages/AboutUspage"));
@@ -71,6 +72,7 @@ function App() {
           }
         />
       </Routes>
+      <Notification/>
       <Toaster />
     </Router>
   );

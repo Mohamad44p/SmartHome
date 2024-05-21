@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "../ui/card";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function MeasurementsCard() {
   const [sensorData, setSensorData] = useState<{
     temperature: number | null;
@@ -25,6 +26,12 @@ export default function MeasurementsCard() {
     return () => clearInterval(intervalId);
   }, []);
   const date = new Date().toLocaleDateString("en-US").split("/").join("-");
+
+  useEffect(() => {
+    if (sensorData.temperature && sensorData.temperature > 35) {
+      toast.error("Warning: Fire in the house");
+    }
+  }, [sensorData]);
 
   return (
     <Card className="lg:w-[300px] aspect-video rounded-lg shadow flex flex-col items-center justify-center gap-2  group">
@@ -117,6 +124,7 @@ export default function MeasurementsCard() {
           </p>
         </div>
       </div>
+      <ToastContainer />
     </Card>
   );
 }

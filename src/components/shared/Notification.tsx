@@ -3,8 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Notification = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [sensorData, setSensorData] = useState(null);
+  const [, setSensorData] = useState(null);
 
   useEffect(() => {
     const fetchSensorData = async () => {

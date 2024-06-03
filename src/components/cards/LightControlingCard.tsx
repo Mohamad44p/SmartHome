@@ -8,8 +8,9 @@ export default function LightControlingCard() {
   const [isLightOn, setIsLightOn] = useState<boolean | null>(null);
   const toggleLight = async () => {
     try {
-      const serverAddress = "http://192.168.1.163:5000";
-      await axios.get(`${serverAddress}/${isLightOn ? "ledvoff" : "ledvon"}`);
+      await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/${isLightOn ? "ledvoff" : "ledvon"}`
+      );
       setIsLightOn(!isLightOn);
     } catch (error) {
       console.error("Error toggling light:", error);

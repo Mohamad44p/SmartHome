@@ -9,7 +9,7 @@ export default function CamaraCard() {
             <h1 className="lg:text-xl font-bold pb-8">Live Video Feed</h1>
             <img
               id="bg"
-              src={"http://192.168.1.163:5000/videofeed" || HomeImage1}
+              src={`${import.meta.env.VITE_SERVER_URL}/videofeed` || HomeImage1}
               alt="Camera Feed"
             />
           </div>

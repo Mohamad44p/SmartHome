@@ -13,7 +13,7 @@ export default function MeasurementsCard() {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch("http://192.168.1.163:5000/read-sensor")
+      fetch(`${import.meta.env.VITE_SERVER_URL}/read-sensor`)
         .then((response) => response.json())
         .then((data) => setSensorData(data))
         .catch((error) => console.error("Error fetching sensor data:", error));

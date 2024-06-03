@@ -21,10 +21,8 @@ export default function RgbControling() {
   };
 
   const sendColorToBackend = (color: { r: number; g: number; b: number }) => {
-    const serverAddress = "http://192.168.1.163:5000";
-
     axios
-      .post(`${serverAddress}/set_color`, color)
+      .post(`${import.meta.env.VITE_SERVER_URL}/set_color`, color)
       .then((response: { data: unknown }) => {
         console.log(response.data);
       })

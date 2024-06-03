@@ -8,7 +8,7 @@ import {
 
 export default function GarageDoorCard() {
   const handleServo = (action: string) => {
-    fetch("http://192.168.1.163:5000/servogarag", {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/servogarag`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

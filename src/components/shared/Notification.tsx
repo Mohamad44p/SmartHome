@@ -8,7 +8,9 @@ const Notification = () => {
   useEffect(() => {
     const fetchSensorData = async () => {
       try {
-        const response = await fetch("http://192.168.1.163:5000/ir-sensor");
+        const response = await fetch(
+          `${import.meta.env.VITE_SERVER_URL}/ir-sensor`
+        );
         const data = await response.json();
         setSensorData(data.ir_value);
 

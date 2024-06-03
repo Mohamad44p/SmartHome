@@ -9,8 +9,7 @@ export default function TvCard() {
 
   const toggleLight = async () => {
     try {
-      const serverAddress = "http://192.168.1.163:5000";
-      await axios.get(`${serverAddress}/${isTvOn ? "tvon" : "tvoff"}`);
+      await axios.get(`${import.meta.env.VITE_SERVER_URL}/${isTvOn ? "tvon" : "tvoff"}`);
       setisTvOn(!isTvOn);
     } catch (error) {
       console.error("Error toggling light:", error);

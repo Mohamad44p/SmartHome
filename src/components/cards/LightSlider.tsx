@@ -6,7 +6,7 @@ export default function LightSlider() {
   const [brightness, setBrightness] = useState<number>(0);
 
   useEffect(() => {
-    fetch("http://192.168.1.163:5000/get_brightness")
+    fetch(`${import.meta.env.VITE_SERVER_URL}/get_brightness`)
       .then((response) => response.json())
       .then((data) => {
         setBrightness(data.brightness);
@@ -18,7 +18,7 @@ export default function LightSlider() {
 
   const handleSliderChange = (value: number[]) => {
     setBrightness(value[0]);
-    fetch("http://192.168.1.163:5000/set_brightness", {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/set_brightness`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

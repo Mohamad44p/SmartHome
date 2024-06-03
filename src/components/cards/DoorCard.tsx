@@ -9,7 +9,7 @@ import { Button } from "../ui/moving-border";
 
 export default function DoorCard() {
   const handleServo = (action: string) => {
-    fetch('http://192.168.1.163:5000/servodoor', {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/servodoor`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
